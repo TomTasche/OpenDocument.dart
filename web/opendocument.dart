@@ -23,7 +23,10 @@ void onFileChanged(Event event) {
 
 void onZipLoaded(ProgressEvent event) {
   FileReader reader = event.currentTarget;
-  Archive archive = new ZipDecoder().decodeBytes(reader.result);
+  
+  var bytes = reader.result;  
+  
+  Archive archive = new ZipDecoder().decodeBytes(bytes);
   
   for (int i = 0; i < archive.numberOfFiles(); ++i) {
     String filename = archive.fileName(i);
