@@ -1,0 +1,5 @@
+name: OpenDocument
+description: A sample web application
+dependencies:
+  browser: any
+  archive: any
