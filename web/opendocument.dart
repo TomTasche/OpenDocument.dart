@@ -1,4 +1,5 @@
 import 'dart:html';
+import 'dart:typed_data';
 
 import 'package:archive/archive.dart';
 
@@ -24,8 +25,7 @@ void onFileChanged(Event event) {
 void onZipLoaded(ProgressEvent event) {
   FileReader reader = event.currentTarget;
   
-  var bytes = reader.result;  
-  
+  var bytes = new Uint8List.view(reader.result);
   Archive archive = new ZipDecoder().decodeBytes(bytes);
   
   for (int i = 0; i < archive.numberOfFiles(); ++i) {
